@@ -111,6 +111,30 @@ public class App {
      */
     public static void gestionarOpcio(int opcio) {
        //TODO:
+    opcio = sc.nextInt();
+        sc.nextLine();
+        switch (opcio) {
+            case 1:
+                reservarHabitacio();
+                break;
+            case 2:
+                alliberarHabitacio();
+                break;
+            case 3:
+                consultarDisponibilitat();
+                break;
+            case 4:
+                llistarReservesPerTipus(null, TIPUS_DELUXE);
+                break;
+            case 5:
+                obtindreReserva();
+                break;
+            case 6:
+                break;
+            default:
+                break;
+        }
+
     }
 
     /**
@@ -120,7 +144,10 @@ public class App {
     public static void reservarHabitacio() {
         System.out.println("\n===== RESERVAR HABITACIÓ =====");
         //TODO:
-        
+        seleccionarTipusHabitacio();
+        seleccionarServeis();
+        calcularPreuTotal();
+        generarCodiReserva();
     }
 
     /**
@@ -129,6 +156,20 @@ public class App {
      */
     public static String seleccionarTipusHabitacio() {
         //TODO:
+        int habitacio = 0;
+
+        do {
+            System.out.println("Habitacions disponibles: ");
+            System.out.println("1. Estàndar 50 € ");
+            System.out.println("2. Suite 100 € ");
+            System.out.println("3. Deluxe 150 € ");
+            System.out.println("Seleccione tipus d'habitació: ");
+
+            habitacio = sc.nextInt();
+            sc.nextLine();
+        } while (habitacio < 1 && habitacio > 3);
+        System.out.println("Opció no disponible. Tria una opció vàlida. ");
+
         return null;
     }
 
@@ -140,6 +181,20 @@ public class App {
     public static String seleccionarTipusHabitacioDisponible() {
         System.out.println("\nTipus d'habitació disponibles:");
         //TODO:
+
+         int habitacio = 0;
+
+        do {
+            System.out.println("Habitacions disponibles: ");
+            System.out.println("1. Estàndar 50 € ");
+            System.out.println("2. Suite 100 € ");
+            System.out.println("3. Deluxe 150 € ");
+            System.out.println("Seleccione tipus d'habitació: ");
+
+            habitacio = sc.nextInt();
+            sc.nextLine();
+        } while (habitacio < 1 && habitacio > 3);
+        System.out.println("Opció no disponible. Tria una opció vàlida. ");
         return null;
     }
 
@@ -168,6 +223,19 @@ public class App {
      */
     public static int generarCodiReserva() {
         //TODO:
+        ArrayList<Integer>codList =new ArrayList<>();
+        int codiReserva = random.nextInt();
+        /*añadir en un arraylist y comprbar que no se repita con un bucle for */
+        for (int i=0;i< codList.size();i++){
+            if (!codList.get(i).equals(codiReserva)){
+                codList.add(codiReserva);
+            }
+            else{ codiReserva = random.nextInt(); //creamos otro codigo de reserva y lo añadimos al arraylist
+                codList.add(codiReserva);
+            }
+            //mostramos por pntalla el codigo al usuario.
+            System.out.println("Codi de reserva: " + codiReserva);
+        }
         return 0;
     }
 
