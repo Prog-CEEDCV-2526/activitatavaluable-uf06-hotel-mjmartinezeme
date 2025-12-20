@@ -17,5 +17,10 @@
     { "name": "Obtindre Reserva", "setup": "mvn -B package --file pom.xml", "run": "mvn -Dtest=AppTest#testObtindreReservaMostraReserva test", "timeout": 200000, "max_score": 2 },
     { "name": "Obtindre Reserva Per Tipus", "setup": "mvn -B package --file pom.xml", "run": "mvn -Dtest=AppTest#testObtindreReservaPerTipusMostraNomésEixeTipus test", "timeout": 200000, "max_score": 2 },
     { "name": "Mostrar Dades Reserva", "setup": "mvn -B package --file pom.xml", "run": "mvn -Dtest=AppTest#testMostrarDadesReserva test", "timeout": 200000, "max_score": 2 }
-  ]
+  ],
+  "terminal.explorerKind": "integrated",
+  "editor.suggest.showMethods": true,
+  "editor.suggest.showModules": true,
+  "java.completion.enabled": true,
+  "java.completion.postfix.enabled": true
 }
