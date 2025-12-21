@@ -432,14 +432,12 @@ public class App {
         int codiReserva = sc.nextInt();
         sc.nextLine();
 
-        /*localitzem reserva amb la seua clau si el hashmap la conté
-        
-        */
-
-        if (reserves.containsKey(codiReserva)){
+        /*
+         * localitzem reserva amb la seua clau si el hashmap la conté
+         */
+        if (reserves.containsKey(codiReserva)) {
             System.out.println(reserves.get(codiReserva));
-        }
-        else 
+        } else
             System.out.println("No existeix la reserva");
     }
 
