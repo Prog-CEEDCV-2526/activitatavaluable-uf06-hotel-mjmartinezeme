@@ -432,15 +432,15 @@ public class App {
         int codiReserva = sc.nextInt();
         sc.nextLine();
 
-        for (int codi : reserves.keySet()) {
-            if (codi == codiReserva) {
+        /*localitzem reserva amb la seua clau si el hashmap la conté
+        
+        */
 
-                mostrarDadesReserva();
-            } else {
-
-                System.out.println("No existeix la reserva");
-            }
+        if (reserves.containsKey(codiReserva)){
+            System.out.println(reserves.get(codiReserva));
         }
+        else 
+            System.out.println("No existeix la reserva");
     }
 
     /*
@@ -450,13 +450,12 @@ public class App {
         System.out.println("\n===== CONSULTAR RESERVES PER TIPUS =====");
         // TODO: Llistar reserves per tipus
 
-        mostrarDadesReserva();
     }
 
     /**
      * Consulta i mostra en detall la informació d'una reserva.
      */
-    public static void mostrarDadesReserva() {
+    public static void mostrarDadesReserva(int codi) {
         // TODO: Imprimir tota la informació d'una reserva
         System.out.println("Tipus d'habitació seleccionat: " + seleccionarTipusHabitacio());
         System.out.println("Serveis seleccionats: " + seleccionarServeis());
