@@ -268,13 +268,14 @@ public class App {
 
             else if (resposta == 's') {
                 respostaValida = true;
-            
+            System.out.println("Introdueix número del servei (1-4): ");
                 System.out.println("1. Esmorçar 10 e ");
                 System.out.println("2. Gimnàs 15 e ");
                 System.out.println("3. Spa 20 e ");
                 System.out.println("4. Piscina 25 e ");
 
-                int opcio = llegirEnter("Introdueix número del servei (1-4): ")
+                int opcio = sc.nextInt();
+                sc.nextLine();
 
                 String serveiTriat = null;
 
