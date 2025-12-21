@@ -144,11 +144,25 @@ public class App {
     public static void reservarHabitacio() {
         System.out.println("\n===== RESERVAR HABITACIÓ =====");
         // TODO:
+
         String tipoHabitacio = seleccionarTipusHabitacio();
         ArrayList<String> serveisList = seleccionarServeis();
         float preuTotal = calcularPreuTotal(tipoHabitacio, serveisList);
         int codiReserva = generarCodiReserva();
 
+        /*
+         * creem un array per memoritzar les dades de la reserva (tipo habitacio y
+         * serveis)
+         */
+        ArrayList<String> dadesReserva = new ArrayList<>();
+        dadesReserva.add(tipoHabitacio);
+        dadesReserva.addAll(serveisList); // AÇI AFEGIM TOTES LES DADES
+        /* añadim al hashmap el codi de reserva creat y les dades de reserva */
+        reserves.put(codiReserva, dadesReserva);
+
+        /* imprimim per visualitzar */
+
+        System.out.println(reserves);
     }
 
     /**
@@ -268,7 +282,7 @@ public class App {
 
             else if (resposta == 's') {
                 respostaValida = true;
-            System.out.println("Introdueix número del servei (1-4): ");
+                System.out.println("Introdueix número del servei (1-4): ");
                 System.out.println("1. Esmorçar 10 e ");
                 System.out.println("2. Gimnàs 15 e ");
                 System.out.println("3. Spa 20 e ");
@@ -346,13 +360,8 @@ public class App {
         for (String servei : serveisList) {
             preuTotal += preusServeis.get(servei);
         }
-        preuTotal = (float) (preuTotal * (1 + 1.21));
-        System.out.println("Preu total (amb IVA): " + preuTotal + "€");
-
-        /*
-         * falta todo aqui
-         */
-
+        preuTotal = preuTotal * (1 + IVA);
+        System.out.println("Preu total (amb IVA): " + String.format("%.2f", preuTotal) + " E");
         return preuTotal;
     }
 
@@ -387,6 +396,8 @@ public class App {
         int codiReserva = sc.nextInt();
         sc.nextLine();
         if (reserves.containsKey(codiReserva)) {
+            reserves.remove(codiReserva);
+            disponibilitatHabitacions.get(seleccionarTipusHabitacio());
 
         }
     }
@@ -420,13 +431,13 @@ public class App {
         System.out.println("Introdueix codi de la reserva: ");
         int codiReserva = sc.nextInt();
         sc.nextLine();
-        boolean codiTrobat;
+
         for (int codi : reserves.keySet()) {
             if (codi == codiReserva) {
-                codiTrobat = true;
+
                 mostrarDadesReserva();
             } else {
-                codiTrobat = false;
+
                 System.out.println("No existeix la reserva");
             }
         }
