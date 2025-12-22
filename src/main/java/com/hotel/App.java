@@ -361,7 +361,7 @@ public class App {
             preuTotal += preusServeis.get(servei);
         }
         preuTotal = preuTotal * (1 + IVA);
-        System.out.println("Preu total (amb IVA): " + String.format("%.2f", preuTotal) + " E");
+        System.out.println("Preu total (amb IVA): " + String.format("%.2f", preuTotal) + " euros");
         return preuTotal;
     }
 
@@ -447,6 +447,7 @@ public class App {
     public static void obtindreReservaPerTipus() {
         System.out.println("\n===== CONSULTAR RESERVES PER TIPUS =====");
         // TODO: Llistar reserves per tipus
+        llistarReservesPerTipus(null, TIPUS_DELUXE);
 
     }
 
