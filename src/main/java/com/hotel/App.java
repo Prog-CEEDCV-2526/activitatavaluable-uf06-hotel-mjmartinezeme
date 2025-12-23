@@ -391,14 +391,28 @@ public class App {
     public static void alliberarHabitacio() {
         System.out.println("\n===== ALLIBERAR HABITACIÓ =====");
         // TODO: Demanar codi, tornar habitació i eliminar reserva
+        int codiReserva;
 
         System.out.println("Introdueix codi de reserva: ");
-        int codiReserva = sc.nextInt();
+        codiReserva = sc.nextInt();
         sc.nextLine();
-        if (reserves.containsKey(codiReserva)) {
-            reserves.remove(codiReserva);
-            disponibilitatHabitacions.get(seleccionarTipusHabitacio());
 
+        if (reserves.containsKey(codiReserva)) {
+            /*
+             * Creem altra vegada les variables i el arraylist de dadesreserva per poder accedir a les dades que ens
+             * interesen, ja que estaben en altres métodes on no podem accedir.
+             * a traves de estas noves variables, agafem les dades el hashmap global
+             */
+            ArrayList<String> dadesReserva = reserves.get(codiReserva); // EJEMPLO: dadesReserva = "Estandar", "Spa"
+            String tipusHabitacio = dadesReserva.get(0); // tipusHabitacio= "Estandar"
+            int disponible = disponibilitatHabitacions.get(tipusHabitacio); // disponible=X
+            disponibilitatHabitacions.put(tipusHabitacio, disponible + 1); // añade 1 a la disponibilitat. "X+1"
+
+            reserves.remove(codiReserva);
+            System.out.println("Reserva cancel·lada ");
+
+        } else {
+            System.out.println("No existeix la reserva");
         }
     }
 
@@ -447,7 +461,11 @@ public class App {
     public static void obtindreReservaPerTipus() {
         System.out.println("\n===== CONSULTAR RESERVES PER TIPUS =====");
         // TODO: Llistar reserves per tipus
-        llistarReservesPerTipus(null, TIPUS_DELUXE);
+        String tipoHabitacio = seleccionarTipusHabitacio();
+
+        // llistarReservesPerTipus(null, tipoHabitacio);
+        disponibilitatHabitacions.get(tipoHabitacio);
+        System.out.println();
 
     }
 
